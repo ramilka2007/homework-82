@@ -3,6 +3,7 @@ import cors from 'cors';
 import config from './config';
 import mongoose from 'mongoose';
 import artistsReducer from "./routers/artists";
+import albumsReducer from "./routers/albums";
 
 const app = express();
 const port = 8000;
@@ -11,6 +12,7 @@ app.use(cors(config.corsOptions));
 app.use(express.json());
 app.use(express.static('public'));
 app.use('/artists', artistsReducer);
+app.use('/albums', albumsReducer);
 
 const run = async () => {
     await mongoose.connect(config.database);

@@ -20,11 +20,10 @@ const AlbumSchema = new Schema({
         type: String,
         required: true,
     },
-    price: {
-        type: Number,
+    release: {
+        type: String,
         required: true,
     },
-    description: String,
     image: String,
 });
 

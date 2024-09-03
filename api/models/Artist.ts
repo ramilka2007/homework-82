@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const ArtistSchema = new Schema({
-    artist: {
+    name: {
         type: String,
         required: true,
         unique: true,

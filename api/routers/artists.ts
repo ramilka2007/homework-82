@@ -1,13 +1,14 @@
 import express from "express";
 import Artist from "../models/Artist";
 import {imagesUpload} from "../multer";
+import mongoose from "mongoose";
 
 const artistsReducer = express.Router();
 
 artistsReducer.post("/", imagesUpload.single('image'), async (req, res, next) => {
     try {
         const artistData = {
-            artist: req.body.artist,
+            name: req.body.name,
             image: req.file ? req.file.filename : null,
             information: req.body.information,
         }
@@ -16,6 +17,10 @@ artistsReducer.post("/", imagesUpload.single('image'), async (req, res, next) =>
         await artist.save();
         return res.send(artist);
     } catch (error) {
+        if (error instanceof mongoose.Error.ValidationError) {
+            return res.status(400).send(error);
+        }
+
         return next(error);
     }
 });
