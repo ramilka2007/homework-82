@@ -3,9 +3,10 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const ArtistSchema = new Schema({
-    name: {
+    artist: {
         type: String,
         required: true,
+        unique: true,
     },
     image: String,
     information: String,
