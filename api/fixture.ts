@@ -7,6 +7,8 @@ const run = async () => {
 
     try {
         await db.dropCollection('artists');
+        await db.dropCollection('albums');
+        await db.dropCollection('tracks');
     } catch (e) {
         console.log('Skipping drop...');
     }
